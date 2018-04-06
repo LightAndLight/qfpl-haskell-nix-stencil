@@ -72,6 +72,13 @@ in
   drv
 |]
 
+gitignore =
+  [template|
+dist/
+dist-newstyle/
+result
+|]
+
 coolerCabalInit =
   promptRequired "package-name" "Package Name" *>
   promptDefault "version" "Version" "0.1.0.0" *>
@@ -97,6 +104,7 @@ coolerCabalInit =
   fillTemplate [template|${package-name}.cabal|] cabalFile *>
   fillTemplate [template|default.nix|] defaultNix *>
   fillTemplate [template|shell.nix|] shellNix *>
+  fillTemplate [template|.gitignore|] gitignore *>
   templatedScript
     [template|${package-name}.nix|]
     (inproc "cabal2nix" ["."] mempty)
