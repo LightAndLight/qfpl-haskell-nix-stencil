@@ -87,26 +87,26 @@ coolerCabalInit =
   promptRequired "package-name" "Package Name" *>
   promptDefault "version" "Version" "0.1.0.0" *>
   let
-    d61 = ("Data61 BSD", fillTemplate [template|LICENCE|] csiroBsd *> pure "BSD3")
+    d61 = ("Data61 BSD", fillTemplate [template|LICENCE|] csiroBsd *> constant "BSD3")
   in
   promptChoice
     "license"
     "License"
-    [ ("GPL-2", pure "GPL-2")
-    , ("GPL-3", pure "GPL-3")
-    , ("LGPL-2.1", pure "LGPL-2.1")
-    , ("LGPL-3", pure "LGPL-3")
-    , ("BSD2", pure "BSD2")
-    , ("BSD3", pure "BSD3")
+    [ ("GPL-2", constant "GPL-2")
+    , ("GPL-3", constant "GPL-3")
+    , ("LGPL-2.1", constant "LGPL-2.1")
+    , ("LGPL-3", constant "LGPL-3")
+    , ("BSD2", constant "BSD2")
+    , ("BSD3", constant "BSD3")
     , d61
-    , ("CSIRO MIT / BSD hybrid", fillTemplate [template|LICENCE|] csiroMitBsd *> pure "BSD3")
-    , ("MIT", pure "MIT")
-    , ("ISC", pure "ISC")
-    , ("MPL-2.0", pure "MPL-2.0")
-    , ("Apache-2.0", pure "Apache-2.0")
-    , ("Public Domain", pure "PublicDomain")
-    , ("All Rights Reserved", pure "AllRightsReserved")
-    , ("Other", pure "OtherLicense")
+    , ("CSIRO MIT / BSD hybrid", fillTemplate [template|LICENCE|] csiroMitBsd *> constant "BSD3")
+    , ("MIT", constant "MIT")
+    , ("ISC", constant "ISC")
+    , ("MPL-2.0", constant "MPL-2.0")
+    , ("Apache-2.0", constant "Apache-2.0")
+    , ("Public Domain", constant "PublicDomain")
+    , ("All Rights Reserved", constant "AllRightsReserved")
+    , ("Other", constant "OtherLicense")
     ]
     (Just d61) *>
   promptRequired "author-name" "Author Name" *>
@@ -117,14 +117,6 @@ coolerCabalInit =
   fillTemplate [template|.gitignore|] gitignore *>
   mkDir "src" *>
   fillTemplate [template|src/Blank.hs|] blankHaskellFile *>
-  templatedScript
-    [template|${package-name}.nix|]
-    (inproc "cabal2nix" ["."] mempty)
-    (\val a -> do
-        let val' = fromString $ Text.unpack val
-        exists <- testfile val'
-        if exists
-          then pure ()
-          else output val' a)
+  script [template|cabal2nix . > ${package-name}.nix|]
 
 main = cmdLineApp coolerCabalInit
