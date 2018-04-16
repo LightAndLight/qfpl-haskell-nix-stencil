@@ -7,8 +7,8 @@ mkDerivation {
   version = "0.1.0.0";
   src = fetchgit {
     url = "https://github.com/lightandlight/stencil";
-    sha256 = "193yphcbsf6svd9jkl6x9qig4yqj73mscfarhp7931d8y8dnb5br";
-    rev = "deb9780707890cb24f1ca59fa775e5de63de7ea5";
+    sha256 = "1f7fcjr7a54hkmi9la8szv8l9297gjbbylwrgix8l5y6iyk1hklg";
+    rev = "8414e4421ae43f3682100ea6fa0bed79f40c06da";
   };
   libraryHaskellDepends = [
     base containers directory free mtl optparse-applicative parsers
