@@ -12,7 +12,7 @@ let
 
   variant = if doBenchmark then pkgs.haskell.lib.doBenchmark else pkgs.lib.id;
 
-  stencil = haskellPackages.callPackage ./nix/stencil.nix {};
+  stencil = haskellPackages.callPackage ./nix/stencil.nix { trifecta = haskellPackages.trifecta_1_7_1_1; };
 
   drv = variant (haskellPackages.callPackage f { inherit stencil; });
 
