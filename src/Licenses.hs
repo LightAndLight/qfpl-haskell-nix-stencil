@@ -4,8 +4,7 @@ module Licenses where
 import Stencil
 
 csiroBsd =
-  [template|
-Copyright (c) 2017, Commonwealth Scientific and Industrial Research Organisation
+  [template|Copyright (c) 2017, Commonwealth Scientific and Industrial Research Organisation
 (CSIRO) ABN 41 687 119 230.
 
 All rights reserved.
@@ -39,8 +38,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 |]
 
 csiroMitBsd =
-  [template|
-CSIRO Open Source Software License Agreement (variation of the BSD / MIT
+  [template|CSIRO Open Source Software License Agreement (variation of the BSD / MIT
 License)
 
 Copyright (c) 2016, Commonwealth Scientific and Industrial Research Organisation
