@@ -112,11 +112,24 @@ coolerCabalInit =
   promptRequired "author-name" "Author Name" *>
   promptRequired "author-email" "Author Email" *>
   fillTemplate [template|${package-name}.cabal|] cabalFile *>
-  fillTemplate [template|default.nix|] defaultNix *>
-  fillTemplate [template|shell.nix|] shellNix *>
+  let
+    nix =
+      ( "yes"
+      , fillTemplate [template|default.nix|] defaultNix *>
+        fillTemplate [template|shell.nix|] shellNix *>
+        script [template|cabal2nix . > ${package-name}.nix|] *>
+        constant "yes"
+      )
+  in
+  promptChoice
+    "generate-nix"
+    "Generate .nix files (requires cabal2nix) (does not work on Windows)"
+    [ nix
+    , ("no", constant "no")
+    ]
+    (Just nix) *>
   fillTemplate [template|.gitignore|] gitignore *>
   mkDir "src" *>
-  fillTemplate [template|src/Blank.hs|] blankHaskellFile *>
-  script [template|cabal2nix . > ${package-name}.nix|]
+  fillTemplate [template|src/Blank.hs|] blankHaskellFile
 
 main = cmdLineApp coolerCabalInit
