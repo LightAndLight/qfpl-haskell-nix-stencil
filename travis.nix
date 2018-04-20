@@ -1,0 +1,1 @@
+import ./default { nixpkgs = import <nixos-unstable> {}; }
