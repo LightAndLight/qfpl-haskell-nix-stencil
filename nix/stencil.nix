@@ -8,8 +8,8 @@ mkDerivation {
   version = "0.1.0.0";
   src = fetchgit {
     url = "https://github.com/lightandlight/stencil";
-    sha256 = "06y9aj3lljv57298j9bkcm8f85xawj8vy3svks5ys40i480jvj2k";
-    rev = "c393db84c2b3a41ae801e9041d3aefc21bbcbeb6";
+    sha256 = "167dcnryrgb6x9qkr3hxp466qswyli5rphc4rr562708jxs7rq13";
+    rev = "b1e7fe30b0695ae421445a4d127bbd1dccaba1b4";
   };
   libraryHaskellDepends = [
     aeson-pretty base bytestring containers directory free mtl
