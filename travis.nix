@@ -1,1 +1,1 @@
-import ./default.nix { nixpkgs = import <nixos-unstable> {}; }
+import ./default.nix { nixpkgs = import <nixpkgs-unstable> {}; }
