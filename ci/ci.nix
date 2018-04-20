@@ -13,4 +13,9 @@
     { system ? builtins.currentSystem }:
     let nixpkgs = import <nixpkgs> { inherit system; }; in
     import ../default.nix { inherit nixpkgs; compiler = "ghc822"; };
+
+  build_ghc842 =
+    { system ? builtins.currentSystem }:
+    let nixpkgs = import <nixpkgs> { inherit system; }; in
+    import ../default.nix { inherit nixpkgs; compiler = "ghc842"; };
 }

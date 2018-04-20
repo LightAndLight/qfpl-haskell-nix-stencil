@@ -1,5 +1,5 @@
 language: nix
-script: nix-build . --arg travis true
+script: nix-build .
 deploy:
   provider: releases
   api_key:
