@@ -1,4 +1,8 @@
-{ nixpkgs ? import <nixpkgs> {}, compiler ? "default", doBenchmark ? false }:
+{ nixpkgs ? import <nixpkgs> {}
+, compiler ? "default"
+, doBenchmark ? false
+, travis ? false
+}:
 
 let
 
@@ -12,7 +16,12 @@ let
 
   variant = if doBenchmark then pkgs.haskell.lib.doBenchmark else pkgs.lib.id;
 
-  stencil = haskellPackages.callPackage ./nix/stencil.nix { trifecta = haskellPackages.trifecta_1_7_1_1; };
+  stencil =
+    haskellPackages.callPackage
+      ./nix/stencil.nix
+      (if travis
+       then {}
+       else { trifecta = haskellPackages.trifecta_1_7_1_1; });
 
   drv = variant (haskellPackages.callPackage f { inherit stencil; });
 
