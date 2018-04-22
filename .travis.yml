@@ -1,5 +1,5 @@
 language: nix
-script: nix-build .
+script: travis_wait 15 nix-build .
 deploy:
   provider: releases
   api_key:
