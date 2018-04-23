@@ -2,8 +2,8 @@ language: c
 sudo: false
 os: osx
 before_install:
-  - brew install ghc@7.10.3
-  - brew link ghc@7.10.3
+  - brew install ghc7103
+  - brew link ghc7103
 script:
   - cabal build
   - cabal test
