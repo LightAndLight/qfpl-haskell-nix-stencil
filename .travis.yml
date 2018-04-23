@@ -1,8 +1,8 @@
 language: haskell
 os: osx
 before_install:
-  - brew install ghc7103
-  - brew link ghc7103
+  - brew install ghc@7.10.3
+  - brew link ghc@7.10.3
 ghc:
   - "7.10"
   - "8.0"
