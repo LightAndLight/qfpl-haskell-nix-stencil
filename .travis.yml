@@ -3,7 +3,7 @@ sudo: true
 os: osx
 before_install:
   - mkdir -p ~/ghcs
-  - if [ ! -e ~/ghcs/ghc822 ]; then curl https://downloads.haskell.org/~platform/8.2.2/Haskell%20Platform%208.2.2%20Core%2064bit-signed.pkg > ~/ghc822.pkg; fi
+  - if [ ! -f ~/ghcs/ghc822.pkg ]; then curl https://downloads.haskell.org/~platform/8.2.2/Haskell%20Platform%208.2.2%20Core%2064bit-signed.pkg > ~/ghcs/ghc822.pkg; fi
   - sudo installer -pkg ~/ghcs/ghc822.pkg -target /
 script:
   - cabal install --only-dependencies
