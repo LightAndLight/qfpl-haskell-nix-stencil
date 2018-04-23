@@ -1,5 +1,10 @@
-language: nix
-script: travis_wait 20 nix-build .
+language: haskell
+os: osx
+ghc:
+  - "7.10"
+  - "8.0.2"
+  - "8.2.2"
+  - "8.4.2"
 deploy:
   provider: releases
   api_key:
