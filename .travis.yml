@@ -3,7 +3,7 @@ sudo: false
 os: osx
 before_install:
   - curl https://haskell.org/platform/download/8.2.2/Haskell%20Platform%208.2.2%20Core%2064bit-signed.pkg
-  - install -pkg "Haskell Platform 8.2.2 Core 64bit-signed.pkg" -target /
+  - installer -pkg "Haskell Platform 8.2.2 Core 64bit-signed.pkg" -target /
 script:
   - cabal build
   - cabal test
