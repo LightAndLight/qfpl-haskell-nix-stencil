@@ -2,9 +2,9 @@ language: c
 sudo: false
 os: osx
 before_install:
-  - curl https://downloads.haskell.org/~platform/8.2.2/Haskell%20Platform%208.2.2%20Core%2064bit-signed.pkg
+  - curl https://downloads.haskell.org/~platform/8.2.2/Haskell%20Platform%208.2.2%20Core%2064bit-signed.pkg > ghc822.pkg
   - ls
-  - installer -pkg "./Haskell Platform 8.2.2 Core 64bit-signed.pkg" -target /
+  - installer -pkg "ghc822.pkg" -target /
 script:
   - cabal build
   - cabal test
