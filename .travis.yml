@@ -7,7 +7,6 @@ cache:
 sudo: true
 os:
   - osx
-  - linux
 before_install:
   - mkdir -p ~/ghcs
   - if [ ! -f ~/ghcs/ghc822.pkg ]; then curl https://downloads.haskell.org/~platform/8.2.2/Haskell%20Platform%208.2.2%20Core%2064bit-signed.pkg > ~/ghcs/ghc822.pkg; fi
@@ -21,7 +20,6 @@ before_deploy:
   script:
     - mkdir deploy
     - mv dist-newstyle/build/x86_64-osx/ghc-8.2.2/qfpl-haskell-nix-stencil-0.1.0.0/c/qfpl-haskell-nix-stencil/build/qfpl-haskell-nix-stencil/qfpl-haskell-nix-stencil deploy/qfpl-stencil-osx
-    - mv dist-newstyle/build/x86_64-linux/ghc-8.2.2/qfpl-haskell-nix-stencil-0.1.0.0/c/qfpl-haskell-nix-stencil/build/qfpl-haskell-nix-stencil/qfpl-haskell-nix-stencil deploy/qfpl-stencil-linux
 deploy:
   provider: releases
   api_key:
