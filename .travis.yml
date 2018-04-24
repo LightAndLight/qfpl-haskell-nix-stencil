@@ -1,4 +1,8 @@
 language: c
+cache:
+  directories:
+    - ~/ghcs
+    - dist-newstyle
 sudo: true
 os: osx
 before_install:
@@ -15,7 +19,7 @@ deploy:
   provider: releases
   api_key:
     secure: WRHxuTHoYET97PbSxUXJMwor/7/JFD/Q14Ox/X9zzp3jPZteg2/KNtIvH+edTct0OnSs1CzWAfUOxJYjCSGwh6eFGLFJw56V0ZVG7SocrKOs7hpZmUIq+bIsOBx8en5OMUqBkCbJOmqoXww/mhpLxydRw7hnyvPDAjdgA7xqM2n7oRoyPNyUpRl0gXQobqsbwkrqCaQXEdiiR5bdeE9EFrRGoDa+75FsO6MSaQmx3+serEWgExXuLW7DJMjXW8Dv+6b/TIsRQIKzfF+FX3KcJ6amQlaQ++hDaPfvyw1bbtcpIAbo1QkmXnJgAB6sqpfYuc/cdXcojabnBaBtcRT5OMidb+4N2GPOux9UCCESFnrewk5YSHvsqMY9dKsc6Xv83JwbK6mjsQ2vlq4edM4I8j1HSdGRU6Oe1zluMC61hUiVHVZCHZ/ZCDUW28r7qMhjFqf9/gntjmp/aw4vtYOtBqQvR0OcHvdttDmy6Ambdv7W2+ml+AmvDf5ZQ2F6fsj3fOZhUq0WJr4n3X5MY2yd9Hi4HYKKRO+KbZKhiUNS9HS8ZlSX4GfT/6nMhaEN0s1NclYJGBN5CPciHtq4soKW+0uQIFU6rB+bwVUPl/sU8ZqFC83B/GXG6QFbXS4CPA3QsUMPVjLg7LFfnMjDRm1NUwwdGsr3rYu4qCBOTaDuyS0=
-  file: dist-newstyle/build/x86_64-linux/ghc-8.2.2/qfpl-haskell-nix-stencil-0.1.0.0/c/qfpl-haskell-nix-stencil/build/qfpl-haskell-nix-stencil/qfpl-haskell-nix-stencil
+  file: dist-newstyle/build/x86_64-osx/ghc-8.2.2/qfpl-haskell-nix-stencil-0.1.0.0/c/qfpl-haskell-nix-stencil/build/qfpl-haskell-nix-stencil/qfpl-haskell-nix-stencil
   on:
     tags: true
     repo: LightAndLight/qfpl-haskell-nix-stencil
