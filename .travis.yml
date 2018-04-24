@@ -6,7 +6,7 @@ before_install:
   - if [ ! -f ~/ghcs/ghc822.pkg ]; then curl https://downloads.haskell.org/~platform/8.2.2/Haskell%20Platform%208.2.2%20Core%2064bit-signed.pkg > ~/ghcs/ghc822.pkg; fi
   - sudo installer -pkg ~/ghcs/ghc822.pkg -target /
   - git clone http://github.com/lightandlight/stencil
-  - echo "packages:\n  .\n  stencil" > cabal.project
+  - echo \"packages:\\n  .\\n  stencil\" > cabal.project
 script:
   - cabal new-build
 deploy:
