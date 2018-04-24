@@ -3,6 +3,7 @@ cache:
   directories:
     - ~/ghcs
     - dist-newstyle
+    - ~/.cabal/store
 sudo: true
 os: osx
 before_install:
