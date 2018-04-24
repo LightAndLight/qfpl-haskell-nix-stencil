@@ -1,9 +1,9 @@
 language: c
 cache:
   directories:
-    - ~/ghcs
+    - $HOME/ghcs
     - dist-newstyle
-    - ~/.cabal/store
+    - $HOME/.cabal/store
 sudo: true
 os:
   - osx
@@ -16,10 +16,8 @@ before_install:
 script:
   - cabal new-configure --disable-executable-dynamic --ghc-option=-optl=-static --ghc-option=-optl=-pthread
   - cabal new-build
-before_deploy:
-  script:
-    - mkdir deploy
-    - mv dist-newstyle/build/x86_64-osx/ghc-8.2.2/qfpl-haskell-nix-stencil-0.1.0.0/c/qfpl-haskell-nix-stencil/build/qfpl-haskell-nix-stencil/qfpl-haskell-nix-stencil deploy/qfpl-stencil-osx
+  - mkdir -p deploy
+  - mv dist-newstyle/build/x86_64-osx/ghc-8.2.2/qfpl-haskell-nix-stencil-0.1.0.0/c/qfpl-haskell-nix-stencil/build/qfpl-haskell-nix-stencil/qfpl-haskell-nix-stencil deploy/qfpl-stencil-osx
 deploy:
   provider: releases
   api_key:
