@@ -41,7 +41,7 @@ library
 |]
 
 shellNix =
-  [template|{ nixpkgs ? import <nixpkgs> {}, compiler ? "ghc821" }:
+  [template|{ nixpkgs ? import <nixpkgs> {}, compiler ? "${ghc-version}" }:
 
 let
 
@@ -53,7 +53,7 @@ in
 |]
 
 defaultNix =
-  [template|{ nixpkgs ? import <nixpkgs> {}, compiler ? "ghc821" }:
+  [template|{ nixpkgs ? import <nixpkgs> {}, compiler ? "${ghc-version}" }:
 
 let
 
@@ -113,9 +113,18 @@ coolerCabalInit =
   promptRequired "author-email" "Author Email" *>
   fillTemplate [template|${package-name}.cabal|] cabalFile *>
   let
+    ghc822 = ("8.2.2", constant "ghc822")
     nix =
       ( "yes"
-      , fillTemplate [template|default.nix|] defaultNix *>
+      , promptChoice
+          "ghc-version"
+          "GHC version"
+          [ ("7.10.3", constant "ghc7103")
+          , ("8.0.2", constant "ghc802")
+          , ghc822
+          ]
+          (Just ghc822) *>
+        fillTemplate [template|default.nix|] defaultNix *>
         fillTemplate [template|shell.nix|] shellNix *>
         script [template|cabal2nix . > ${package-name}.nix|] *>
         constant "yes"
