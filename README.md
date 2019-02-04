@@ -1,8 +1,8 @@
 ```
-Usage: qfpl-haskell-nix-stencil [-n] [--package-name "Package Name"]
-                                [--version "Version"] [--license "License"]
-                                [--author-name "Author Name"]
-                                [--author-email "Author Email"]
+Usage: qfpl-init [-n] [--package-name "Package Name"] [--version "Version"]
+                 [--license "License"] [--author-name "Author Name"]
+                 [--author-email "Author Email"]
+                 [--generate-nix "Generate .nix files (requires cabal2nix) (does not work on Windows)"]
 
 Available options:
   -n                       non-interactive mode (other flags only work if this
@@ -18,5 +18,7 @@ Available options:
                            Author Name
   --author-email "Author Email"
                            Author Email
+  --generate-nix "Generate .nix files (requires cabal2nix) (does not work on Windows)"
+                           Choices: yes no Default: yes
   -h,--help                Show this help text
 ```

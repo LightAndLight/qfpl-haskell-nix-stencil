@@ -5,9 +5,6 @@
 import Stencil
 import Stencil.CmdLine
 
-import Data.String
-import Turtle.Prelude hiding (stderr)
-
 import qualified Data.Text as Text
 
 import Licenses
@@ -77,6 +74,7 @@ gitignore =
 dist/
 dist-newstyle/
 result
+.ghc.*
 |]
 
 blankHaskellFile =
@@ -113,7 +111,7 @@ coolerCabalInit =
   promptRequired "author-email" "Author Email" *>
   fillTemplate [template|${package-name}.cabal|] cabalFile *>
   let
-    ghc822 = ("8.2.2", constant "ghc822")
+    defaultGHC = ("default", constant "default")
     nix =
       ( "yes"
       , promptChoice
@@ -121,9 +119,12 @@ coolerCabalInit =
           "GHC version"
           [ ("7.10.3", constant "ghc7103")
           , ("8.0.2", constant "ghc802")
-          , ghc822
+          , ("8.2.2", constant "ghc822")
+          , ("8.4.3", constant "ghc843")
+          , ("8.6.2", constant "ghc862")
+          , defaultGHC
           ]
-          (Just ghc822) *>
+          (Just defaultGHC) *>
         fillTemplate [template|default.nix|] defaultNix *>
         fillTemplate [template|shell.nix|] shellNix *>
         script [template|cabal2nix . > ${package-name}.nix|] *>
